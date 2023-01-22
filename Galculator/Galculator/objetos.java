@@ -4,6 +4,7 @@ public class objetos {
 
     static Scanner sc2 = new Scanner(System.in);
     static Scanner sc1 = new Scanner(System.in);
+    static Scanner sc3 = new Scanner(System.in);
 
     
 
@@ -39,8 +40,6 @@ public class objetos {
     }
 
     public static void tienda(){
-        enemigo.com = false;
-        turn = false;
         tien = true;
         System.out.println("***************************BIENVENIDO A LA TIENDA***************************");
         if (hacha.sold == false) {
@@ -90,17 +89,24 @@ public class objetos {
         System.out.println("Dinero disponible: "+ personaje.din+" gemas");
         System.out.println("para mirar la descripcion escriba el numero del producto.");
         System.out.println("para salir de la tienda (0)");
-        pro = sc1.nextInt();
+        try {
+            pro = sc1.nextInt();
+        } catch (Exception e) {
+            System.out.println("orden incorrecta");
+            pro = sc3.nextInt();
+            //eventos.esperar(2);
+            //tienda();
+        }
         
     
 
-    
-
+        
         switch (pro) {
             case 1:
 
             if (hacha.sold == true) {
                 System.out.println("No puedes volver a comprar este objeto");
+                eventos.esperar(2);
                 tienda();
             } else {
                 System.out.println("El hacha aumenta el ataque +9, su precio es de "+hacha.precio+" gemas");
@@ -110,6 +116,7 @@ public class objetos {
             case 2:
             if (bumeran.sold == true) {
                 System.out.println("No puedes volver a comprar este objeto");
+                eventos.esperar(2);
                 tienda();
             } else {
                 System.out.println("El bumeran aumenta el ataque +4 y tienes una probabilidad de poder asestar dos golpes, su precio es de  "+bumeran.precio+" gemas");
@@ -119,6 +126,7 @@ public class objetos {
             case 3:
             if (espada.sold == true) {
                 System.out.println("No puedes volver a comprar este objeto");
+                eventos.esperar(2);
                 tienda();
             } else {
                 System.out.println("La espada aumenta el ataque en +2, su precio es de "+espada.precio+" gemas");
@@ -128,6 +136,7 @@ public class objetos {
             case 4:
             if (shuriken.sold == true) {
                 System.out.println("No puedes tener dos unidades de este objeto");
+                eventos.esperar(2);
                 tienda();
             } else {
                 System.out.println("Gracias a estos shurikens tu proximo ataque tendra un daño adicional de +4, su precio es de  "+shuriken.precio+" gemas");
@@ -137,6 +146,7 @@ public class objetos {
             case 5:
             if (escudo.sold == true) {
                 System.out.println("No puedes volver a comprar este objeto");
+                eventos.esperar(2);
                 tienda();
             } else {
                 System.out.println("El escudo reduce el daño recibido en -1, su precio es de "+escudo.precio+" gemas");
@@ -152,7 +162,6 @@ public class objetos {
             filete.buy();
             break;
             case 0:
-            algo = true;
             tien = false;
 
             if(objetos.hacha.pow){
@@ -187,7 +196,18 @@ public class objetos {
                 personaje.dm = personaje.dm +4;
                 objetos.shuriken.pow = false;
             }
-            ciclo.reloj();
+
+            if (objetos.escudo.pow){
+                enemigo.dm = enemigo.dm -1;
+                objetos.escudo.pow = false;
+            }
+
+            System.out.println("--------------------------------\nenemigo\t\thp\tdaño\n"+ enemigo.name+ "\t\t"+ enemigo.hp+"\t"+enemigo.dm+"\n--------------------------------");
+            break;
+            default:
+            System.out.println("orden incorrecta");
+            eventos.esperar(2);
+            tienda();
             break;
         }
 
@@ -201,16 +221,20 @@ public class objetos {
 
         if (res.equals("s") && personaje.din <= this.precio) {
             System.out.println("no tienes dinero, vete a otro lado con tu pobreza");
+            eventos.esperar(2);
             tienda();
         } else if(res.equals("s") && personaje.din >= this.precio){
             System.out.println("Has adquirido el producto");
+            eventos.esperar(2);
             personaje.din = personaje.din - this.precio;
             this.sold = true;
             this.pow = true;
             tienda();
             }
-        if (res.equals("n")) {
+        else if (res.equals("n")) {
             tienda();
+            } else {
+                System.out.println("orden incorrecta");
             }
         
     }

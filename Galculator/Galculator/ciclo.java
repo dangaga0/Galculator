@@ -8,20 +8,28 @@ public class ciclo {
 
     static String vol;
 
+
     public static void reloj(){
     while(objetos.algo){
 
         System.out.println("Deseas entablar una batalla? (s/n)");
         String alg = sc.nextLine();
-
+        try{
         switch (alg) {
             case ("s"):
             objetos.algo = false;
             break;
             case ("n"):
             System.out.println("entonces porque juegas?");
+            eventos.esperar(3);
+            break;
+            default:
+            System.out.println("orden incorrecta");
             break;
 
+        }
+        }catch (Exception e) {
+            System.out.println("orden incorrecta");
         }
         }
         enemigo.com = true;
@@ -41,53 +49,20 @@ public class ciclo {
             break;
         }
 
-        System.out.println("--------------------------------\nenemigo\t\thp\tdaño\n"+ enemigo.name+ "\t\t"+ enemigo.hp+"\t"+enemigo.dm+"\n----------------------------------------");
+        System.out.println("--------------------------------\nenemigo\t\thp\tdaño\n"+ enemigo.name+ "\t\t"+ enemigo.hp+"\t"+enemigo.dm+"\n--------------------------------");
 
             objetos.turn = true;
 
             while(objetos.turn){
             personaje.accion();
 
-                if (personaje.hp <=0 || enemigo.hp <=0) {  
-                    objetos.turn = false;   
-                    }                
+            while (objetos.tien) {
+
+                }     
             }
+
+        }
+
         
-            if (personaje.hp <= 0) {
-                objetos.turn = false;
-                enemigo.com = false;
-                objetos.algo = true;
-                objetos.pan.sold = false;
-                objetos.hacha.sold = false;
-                objetos.escudo.sold = false;
-                objetos.espada.sold = false;
-                objetos.shuriken.sold = false;
-                objetos.filete.sold = false;
-                objetos.bumeran.sold = false;
-                personaje.din = 0;
-                personaje.hp = 10;
-                personaje.dm = 5;
-
-                
-                System.out.println("HAS MUERTO");
-                System.out.println("pulse para volver a jugar");
-                
-                vol = sc.nextLine();
-                
-                if (!vol.equals("")) {
-                    reloj();
-                }
-
-
-            } else if(enemigo.hp <= 0){
-                personaje.din = personaje.din + enemigo.price;
-                System.out.println("------------------------------------------------\nhas ganado " + enemigo.price+" gemas, te espera otra batalla");
-            }
-
-        }
-
-        while (objetos.tien = true) {
-
-        }
     }
 }

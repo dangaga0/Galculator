@@ -10,6 +10,7 @@ public class personaje {
     static int hp = 10;
     static int dm = 5;
     static int phu;
+    static String vol;
 
     
 
@@ -31,14 +32,34 @@ public class personaje {
             if (objetos.bumeran.sold){
             int dob = rm.nextInt(5);
             if (dob == 1) {
-                ataque1();
+                ataque();
+                eventos.enem();
+                eventos.esperar(3);
+                enemigo.ataque();
+                eventos.perm();         
+                eventos.esperar(3);
                 ataque2();
+                eventos.enem();
+                eventos.esperar(2);       
                 
             } else {
                 ataque();
+                eventos.enem();
+                eventos.esperar(3);
+                enemigo.ataque();
+                eventos.perm();
+                eventos.esperar(2);         
             } 
-            enemigo.ataque();
             }
+            if (!objetos.bumeran.sold) {
+                ataque();
+                eventos.enem();
+                eventos.esperar(3);
+                enemigo.ataque();
+                eventos.perm();
+                eventos.esperar(2);         
+            }
+                
             if (objetos.shuriken.sold) {
                 objetos.shuriken.sold = false;
                 personaje.dm = personaje.dm - 4;
@@ -49,11 +70,16 @@ public class personaje {
             phu = rm.nextInt(2);
 
             if (phu == 0) {
+                eventos.esperar(2);
                 System.out.println("No has podido huir");
                 enemigo.ataque();
+                eventos.perm();
+
                 
             } else {
+                eventos.esperar(2);
                 System.out.println("has hudido con exito");
+                
                 enemigo.com = false;
                 objetos.turn = false;
                 ciclo.reloj();
@@ -61,12 +87,14 @@ public class personaje {
             }
         } else if(acc.equals("t")){
 
-            enemigo.com = false;
             objetos.tienda();
             
-
         }    
         else if(acc.equals("i")){
+            objetos.tien = true;
+            inventario();
+        }else{
+            System.out.println("orden incorrecta");
         }
 
                         
@@ -78,7 +106,7 @@ public class personaje {
         System.out.println("has atacado y has infligido " + dm);
         enemigo.hp = (enemigo.hp - dm);
 
-        System.out.println("--------------------------------\nenemigo\t\thp\tdaño\n"+ enemigo.name+ "\t\t"+ enemigo.hp+"\t"+enemigo.dm+"\n----------------------------------------");
+        System.out.println("--------------------------------\nenemigo\t\thp\tdaño\n"+ enemigo.name+ "\t\t"+ enemigo.hp+"\t"+enemigo.dm+"\n--------------------------------");
         
     }
 
@@ -95,8 +123,51 @@ public class personaje {
         System.out.println("¡Has vuleto a atacar por el bomerang! y has infligido " + dm);
         enemigo.hp = (enemigo.hp - dm);
 
-        System.out.println("--------------------------------\nenemigo\t\thp\tdaño\n"+ enemigo.name+ "\t\t"+ enemigo.hp+"\t"+enemigo.dm+"\n----------------------------------------");
+        System.out.println("--------------------------------\nenemigo\t\thp\tdaño\n"+ enemigo.name+ "\t\t"+ enemigo.hp+"\t"+enemigo.dm+"\n--------------------------------");
         
+    }
+
+    public static void inventario(){
+
+    System.out.println("***************INVENTARIO***************");
+
+    if (objetos.hacha.sold) {
+        System.out.println("\n-hacha, +9 daño");
+    }
+    
+    if (objetos.bumeran.sold) {
+        System.out.println("-bumerang, +4 daño y oportunidad de doble golpe");
+    }
+
+    if (objetos.espada.sold) {
+        System.out.println("-espada, +2 daño");
+    }
+
+    if (objetos.shuriken.sold) {
+        System.out.println("-shuriken(x1), +4 daño");
+    }
+
+    if (objetos.escudo.sold) {
+        System.out.println("-escudo, -1 daño recibido");
+    }
+
+    System.out.println("\n****Stadisticas****");
+    System.out.println("\n-" + personaje.hp+" hp");
+    System.out.println("-"+personaje.dm+" daño");
+    
+
+    System.out.println("\npulse cualquier letra para regresar");
+                
+                vol = sc.nextLine();
+                
+                if (!vol.equals("")) {
+                    objetos.tien = false;
+                    System.out.println("--------------------------------\nenemigo\t\thp\tdaño\n"+ enemigo.name+ "\t\t"+ enemigo.hp+"\t"+enemigo.dm+"\n--------------------------------");
+                }else{
+                    System.out.println("letra, no numero retrasado");
+                }
+
+
     }
 
 
