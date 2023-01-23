@@ -15,6 +15,7 @@ public class objetos {
     static objetos shuriken = new objetos(8,"shuriken",false,false);
     static objetos escudo = new objetos(10,"escudo",false,false);
     static objetos pan = new objetos(5,"pan",false,false);
+    static objetos esclavo = new objetos(50,"esclavo",false,false);
     
 
     int precio;
@@ -82,6 +83,12 @@ public class objetos {
             System.out.println("(7) filete_______17 gemas");
         } else {
             System.out.println("(7) filete_______17 gemas");
+            
+        }
+        if (esclavo.sold == false) {
+            System.out.println("(8) esclavo_______50 gemas");
+        } else {
+            System.out.println("(8) esclavo_______50(sold) gemas");
             
         }
         

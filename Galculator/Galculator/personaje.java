@@ -72,6 +72,7 @@ public class personaje {
             if (phu == 0) {
                 eventos.esperar(2);
                 System.out.println("No has podido huir");
+                eventos.esperar(2);
                 enemigo.ataque();
                 eventos.perm();
 
