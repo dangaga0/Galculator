@@ -12,7 +12,7 @@ public class Game {
 
         while(inf == 1){
 
-        ciclo.reloj();
+        Ciclo.reloj();
         }
 
     }
