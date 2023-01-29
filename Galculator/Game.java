@@ -4,7 +4,9 @@ public class Game {
     static int inf =1;
     
 
-    public static void main(String[]args){
+    public static void main(String[]args) {
+
+
 
         //Frame frame = new Frame();
         //Label label = new Label();
@@ -17,4 +19,5 @@ public class Game {
 
     }
 }
+
 

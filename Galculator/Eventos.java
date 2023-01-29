@@ -1,3 +1,4 @@
+import java.io.FileReader;
 import java.util.*;
 
 public class Eventos {
@@ -33,6 +34,26 @@ public class Eventos {
          }
     }   
 
+    public static void vex(){
+            System.out.println("quieres ir a otro lugar a explorar (s/n)");
+            String res = sc.nextLine();
+
+            switch (res) {
+                case "s":
+                    Objetos.algo = true;
+                    Ciclo.reloj();
+                    break;
+                case "n":
+                    Ciclo.reloj();
+                    break;
+                
+                default: System.out.println("orden incorrecta");
+                    break;
+            }
+        }
+
+
+
     public static void enem(){
         if(Enemigo.hp <= 0){
             if (Objetos.shuriken.sold) {
@@ -42,24 +63,8 @@ public class Eventos {
             Eventos.esperar(3);
             Personaje.din = Personaje.din + Enemigo.price;
             System.out.println("------------------------------------------------\nhas ganado " + Enemigo.price+" gemas, te espera otra batalla");
-            System.out.println("quieres ir a otro lugar a explorar (s/n)");
-            String res = sc.nextLine();
-
-            try {
-                switch (res) {
-                    case "s":
-                        Objetos.algo = true;
-                        Ciclo.reloj();
-                        break;
-                    case "n":
-                        Ciclo.reloj();
-                
-                    default: System.out.println("orden incorrecta");
-                        break;
-                }
-            } catch (Exception e) {
-                System.out.println("orden incorrecta");
-            }
+            Objetos.turn = false;
+            
         }
 
     }
@@ -76,13 +81,32 @@ public class Eventos {
             Objetos.shuriken.sold = false;
             Objetos.filete.sold = false;
             Objetos.bumeran.sold = false;
+            Ciclo.rio = false;
+            Ciclo.barca = false;
+            Ciclo.portal = false;
+            Ciclo.castillo = false;
+            Ciclo.villa = false;
+            Ciclo.portal2 = false;
+
+
             Personaje.din = 0;
             Personaje.hp = 10;
             Personaje.dm = 5;
 
             
-            System.out.println("HAS MUERTO");
+            try {
+                try (FileReader file = new FileReader("muerte.txt")) {
+                    int valor=file.read();
+                    while(valor!=-1){
+                        System.out.print((char)valor);
+                        valor=file.read();
+                    }
+                }
+                } catch (Exception e) {
+                System.out.println(e);
+            }
             Eventos.esperar(4);
+            System.out.println("");
             System.out.println("pulse cualquier letra para regresar");
             
             String vol = sc.nextLine();
@@ -94,6 +118,64 @@ public class Eventos {
             } 
         }
         
+    }
+
+    public static void quem(){
+        System.out.println("El enemigo ha sufrido 3 de daño por quemaduras");
+        Enemigo.hp = Enemigo.hp -2;
+
+    }
+
+    public static void villa() {
+        System.out.print("Esta todo destrozado y parece no queda nadie");
+                Eventos.esperar(1);
+                System.out.print(".");
+                Eventos.esperar(1);
+                System.out.print(".");
+                Eventos.esperar(1);
+                System.out.print(".");
+                System.out.println("");
+                Eventos.esperar(3);
+                Enemigo.pato_mutante();
+                System.out.println("--------------------------------\nenemigo\t\thp\tdaño\n"+ Enemigo.name+ "\t\t"+ Enemigo.hp+"\t"+Enemigo.dm+"\n--------------------------------");                    while (Objetos.turn) {
+                    Personaje.accion();
+                }
+                Eventos.esperar(3);
+                System.out.println("parece que aun quedan algunos enemigos");
+                Eventos.esperar(3);
+                Enemigo.pato_mutante();
+                System.out.println("--------------------------------\nenemigo\t\thp\tdaño\n"+ Enemigo.name+ "\t\t"+ Enemigo.hp+"\t"+Enemigo.dm+"\n--------------------------------");                    while (Objetos.turn) {
+                    Personaje.accion();
+                }
+                Enemigo.pato_TNT();
+                System.out.println("--------------------------------\nenemigo\t\thp\tdaño\n"+ Enemigo.name+ "\t\t"+ Enemigo.hp+"\t"+Enemigo.dm+"\n--------------------------------");                    while (Objetos.turn) {
+                    Personaje.accion();
+                }
+                Eventos.esperar(3);
+                System.out.println("-¡Queda alguien bajo esos escombros!");
+                Eventos.esperar(3);
+                System.out.println("¿puede contarme que ha ocurrido?");
+                Eventos.esperar(3);
+                System.out.println("-Joven aventurero, hemos sido arrasados por esos patos con los que te acabas de enfrentar.");
+                Eventos.esperar(5);
+                System.out.println("Se han llevado a un gran numero de nosotros a ese castillo, pero no puedes entrar porque");
+                Eventos.esperar(5);
+                System.out.print(".");
+                Eventos.esperar(1);
+                System.out.print(".");
+                Eventos.esperar(1);
+                System.out.print(".");
+                Eventos.esperar(3);
+                System.out.println("");
+                System.out.println("-Justo se tenia que morir ahora, que guion tan original");
+                Eventos.esperar(4);
+                System.out.println("Supongo que no me queda más remedio que explorar ese portal");
+                Ciclo.portal = true;
+                Ciclo.villa = true;
+                Eventos.esperar(4);
+    }
+    public static void portal(){
+
     }
 
 }

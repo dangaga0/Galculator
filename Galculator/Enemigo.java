@@ -15,21 +15,26 @@ public class Enemigo {
 
     Enemigo(String name,int hp,int dm,int price){
 
+
         this.name = name;
         this.hp = hp;
-        this.dm = dm;
-        this.price = price;
-
+        if(Objetos.armadura.sold){
+            this.dm = dm -3;
+        } else if(Objetos.escudo.sold){
+            this.dm = dm -1;
+        }else{
+            this.dm = dm;}
         
+        this.price = price;
     }
+        
+    
 
     public static void pato(){
 
-        Enemigo pato = new Enemigo("pato",7,2,5);
+        Enemigo pato = new Enemigo("pato",7,2,4);
         com = true;
-        if(Objetos.escudo.sold){
-            pato.dm = pato.dm -1;
-        }
+        Objetos.turn = true;
 
     }
 
@@ -37,86 +42,91 @@ public class Enemigo {
 
         Enemigo slime = new Enemigo("slime",6,1,2);
         com = true;
-        if(Objetos.escudo.sold){
-            slime.dm = slime.dm -1;
-        }
-
+        Objetos.turn = true;
     }
 
     public static void pajaro(){
 
-        Enemigo slime = new Enemigo("pajaro",7,3,5);
+        Enemigo slime = new Enemigo("pajaro",7,3,4);
         com = true;
-        if(Objetos.escudo.sold){
-            slime.dm = slime.dm -1;
-        }
+        Objetos.turn = true;
+
 
     }
 
-    public static void serpiente(){
+    public static void buitre(){
 
-        Enemigo serpiente = new Enemigo("serpien",11,4,10);
+        Enemigo buitre = new Enemigo("buitre",11,7,12);
         com = true;
-        if(Objetos.escudo.sold){
-            serpiente.dm = serpiente.dm -1;
-        }
+        Objetos.turn = true;
+
 
     }
 
-    public static void mono(){
+    public static void camello(){
 
-        Enemigo mono = new Enemigo("mono",12,5,11);
+        Enemigo camello = new Enemigo("camello",12,6,11);
         com = true;
-        if(Objetos.escudo.sold){
-            mono.dm = mono.dm -1;
-        }
-
+        Objetos.turn = true;
+        
     }
 
-    public static void lobo(){
+    public static void momia(){
 
-        Enemigo lobo = new Enemigo("lobo",8,9,10);
+        Enemigo momia = new Enemigo("momia",8,10,10);
         com = true;
-        if(Objetos.escudo.sold){
-            lobo.dm = lobo.dm -1;
-        }
+        Objetos.turn = true;
+        
 
     }
 
     public static void dragon(){
 
-        Enemigo dragon = new Enemigo("dragon",25,7,15);
+        Enemigo dragon = new Enemigo("dragon",27,11,15);
         com = true;
-        if(Objetos.escudo.sold){
-            dragon.dm = dragon.dm -1;
-        }
-
+        Objetos.turn = true;
+        
     }
 
     public static void golem(){
 
-        Enemigo golem = new Enemigo("golem",30,6,20);
+        Enemigo golem = new Enemigo("golem",40,9,20);
         com = true;
-        if(Objetos.escudo.sold){
-            golem.dm = golem.dm -1;
-        }
+        Objetos.turn = true;
+        
 
     }
 
     public static void oso(){
 
-        Enemigo centaleon = new Enemigo("oso",27,8,18);
+        Enemigo oso = new Enemigo("oso",29,10,15);
         com = true;
-        if(Objetos.escudo.sold){
-            centaleon.dm = centaleon.dm -1;
-        }
+        Objetos.turn = true;
+       
+    }
+
+    public static void pato_mutante(){
+
+        Enemigo pato_mutante = new Enemigo("pato\nmutante",20,12,13);
+        com = true;
+        Objetos.turn = true;
+        
+
+    }
+
+    public static void pato_TNT(){
+
+        Enemigo pato_dinamita = new Enemigo("pato\nTNT",1,20,15);
+        com = true;
+        Objetos.turn = true;
+        
 
     }
 
 
     public static void ataque(){
 
-        System.out.println("el Enemigo a atacado de vulta infringiendo " + Enemigo.dm);
+        System.out.println("el enemigo a atacado inringiendo " + Enemigo.dm);
         Personaje.hp = (Personaje.hp - Enemigo.dm);
         System.out.println("--------------------------------\ntu\thp\tdaño\ntu\t"+ Personaje.hp+"\t"+Personaje.dm+"\n--------------------------------");
         
