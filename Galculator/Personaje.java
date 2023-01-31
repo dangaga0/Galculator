@@ -28,7 +28,13 @@ public class Personaje {
         String acc =sc.nextLine();
 
         if (acc.equals("a")) {
-
+            
+            if (Objetos.anillo_fuego.sold) {
+                Eventos.quem();
+                System.out.println("--------------------------------\nEnemigo\t\thp\tdaño\n"+ Enemigo.name+ "\t\t"+ Enemigo.hp+"\t"+Enemigo.dm+"\n--------------------------------");
+                Eventos.enem();
+                
+            }
             if (Objetos.anillo_hielo.sold) {
                 int conj = rm.nextInt(3);
                 if (conj == 1) {

@@ -21,7 +21,17 @@ public class Eventos {
         esperar(3);
         System.out.println("Ten cuidado, hemos sido atacados por seres muy peligrosos...");
         esperar(5);
-        System.out.println("LOS PATOS MUTANTES.");
+        try {
+            try (FileReader file = new FileReader("patosmut.txt")) {
+                int valor=file.read();
+                while(valor!=-1){
+                    System.out.print((char)valor);
+                    valor=file.read();
+                }
+            }
+            } catch (Exception e) {
+            System.out.println(e);
+        }
         esperar(3);
 
     }
@@ -175,7 +185,13 @@ public class Eventos {
                 Eventos.esperar(4);
     }
     public static void portal(){
+        System.out.println("EN DESARROLLO");
+    }
 
+    public static void borrar() {
+        System.out.print("\033[H\033[2J");  
+        System.out.flush();
+        
     }
 
 }

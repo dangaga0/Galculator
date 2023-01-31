@@ -33,7 +33,7 @@ while(Objetos.algo){
     montaña = false;
     rio = false;
     System.out.println("Donde quieres ir a explorar?");
-    Eventos.esperar(3);
+    Eventos.esperar(2);
     try {
         try (FileReader file = new FileReader("montes.txt")) {
             int valor=file.read();
@@ -45,7 +45,7 @@ while(Objetos.algo){
         } catch (Exception e) {
         System.out.println(e);
     }
-    Eventos.esperar(3);
+    Eventos.esperar(2);
     try {
         try (FileReader file = new FileReader("desierto.txt")) {
             int valor=file.read();
@@ -57,7 +57,7 @@ while(Objetos.algo){
         } catch (Exception e) {
         System.out.println(e);
     }
-    Eventos.esperar(3);
+    Eventos.esperar(2);
     try {
         try (FileReader file = new FileReader("pradera.txt")) {
             int valor=file.read();
@@ -69,7 +69,7 @@ while(Objetos.algo){
         } catch (Exception e) {
         System.out.println(e);
     }
-    Eventos.esperar(3);
+    Eventos.esperar(2);
     try {
         try (FileReader file = new FileReader("rio.txt")) {
             int valor=file.read();
@@ -116,7 +116,7 @@ while(Objetos.algo){
     while (rio) {
 
         System.out.println("Donde quieres ir a explorar?");
-        Eventos.esperar(3);
+        Eventos.esperar(2);
         try {
             try (FileReader file = new FileReader("castillo.txt")) {
                 int valor=file.read();
@@ -128,7 +128,7 @@ while(Objetos.algo){
             } catch (Exception e) {
             System.out.println(e);
         }
-        Eventos.esperar(3);
+        Eventos.esperar(2);
         try {
             try (FileReader file = new FileReader("villa.txt")) {
                 int valor=file.read();
@@ -140,7 +140,7 @@ while(Objetos.algo){
             } catch (Exception e) {
             System.out.println(e);
         }
-        Eventos.esperar(3);
+        Eventos.esperar(2);
         try {
             try (FileReader file = new FileReader("portal.txt")) {
                 int valor=file.read();
@@ -152,7 +152,7 @@ while(Objetos.algo){
             } catch (Exception e) {
             System.out.println(e);
         }
-        Eventos.esperar(3);
+        Eventos.esperar(2);
         try {
             try (FileReader file = new FileReader("rio.txt")) {
                 int valor=file.read();
@@ -236,6 +236,18 @@ while(Objetos.algo){
         if (pradera) {
             switch (ene){
                 case 1 : Enemigo.pato();
+                try {
+                    try (FileReader file = new FileReader("patisp.txt")) {
+                        int valor=file.read();
+                        while(valor!=-1){
+                            System.out.print((char)valor);
+                            valor=file.read();
+                        }
+                    }
+                    } catch (Exception e) {
+                    System.out.println(e);
+                }
+                System.out.println("");
                 break;
                 case 2 : Enemigo.slime();
                 break;
