@@ -22,7 +22,7 @@ public class Eventos {
         System.out.println("Ten cuidado, hemos sido atacados por seres muy peligrosos...");
         esperar(5);
         try {
-            try (FileReader file = new FileReader("patosmut.txt")) {
+            try (FileReader file = new FileReader("Sprites/patosmut.txt")) {
                 int valor=file.read();
                 while(valor!=-1){
                     System.out.print((char)valor);
@@ -105,7 +105,7 @@ public class Eventos {
 
             
             try {
-                try (FileReader file = new FileReader("muerte.txt")) {
+                try (FileReader file = new FileReader("Sprites/muerte.txt")) {
                     int valor=file.read();
                     while(valor!=-1){
                         System.out.print((char)valor);

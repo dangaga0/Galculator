@@ -50,7 +50,7 @@ public class Objetos {
         tien = true;
         if (Ciclo.barca) {
             try {
-                try (FileReader file = new FileReader("shop.txt")) {
+                try (FileReader file = new FileReader("Sprites/shop.txt")) {
                     int valor=file.read();
                     while(valor!=-1){
                         System.out.print((char)valor);
@@ -62,7 +62,7 @@ public class Objetos {
             }
         } else {
             try {
-                try (FileReader file = new FileReader("shop2.txt")) {
+                try (FileReader file = new FileReader("Sprites/shop2.txt")) {
                     int valor=file.read();
                     while(valor!=-1){
                         System.out.print((char)valor);
@@ -74,82 +74,6 @@ public class Objetos {
             }
         }
         
-        // System.out.println("***************************BIENVENIDO A LA TIENDA***************************");
-        // if (hacha.sold == false) {
-        //     System.out.println("(1) hacha________"+hacha.precio+" gemas");
-        // } else {
-        //     System.out.println("(1) hacha________"+hacha.precio+" gemas(sold)");
-            
-        // }
-        // if (bumeran.sold == false) {
-        //     System.out.println("(2) bumeran_____"+bumeran.precio+" gemas");
-        // } else {
-        //     System.out.println("(2) bumeran_____"+bumeran.precio+" gemas(sold)");
-            
-        // }
-        // if (espada.sold == false) {
-        //     System.out.println("(3) espada_______"+espada.precio+" gemas");
-        // } else {
-        //     System.out.println("(3) espada_______"+espada.precio+" gemas(sold)");
-            
-        // }
-        // if (Ciclo.barca) {
-        //     if (anillo_fuego.sold == false) {
-        //         System.out.println("(4) anillo_fuego_______"+anillo_fuego.precio+" gemas");
-        //     } else {
-        //         System.out.println("(4) anillo_fuego_______"+anillo_fuego.precio+"(sold) gemas");
-                
-        //     }
-        //     if (anillo_hielo.sold == false) {
-        //         System.out.println("(5) anillo_hielo_______"+anillo_hielo.precio+" gemas");
-        //     } else {
-        //         System.out.println("(5) anillo_hielo_______"+anillo_hielo.precio+"(sold) gemas");
-                
-        //     }
-        // }else{
-        //     System.out.println("???");
-        //     System.out.println("???");
-        // }
-        
-        // if (shuriken.sold == false) {
-        //     System.out.println("(6) shuriken______"+shuriken.precio+" gemas");
-        // } else {
-        //     System.out.println("(6) shuriken______"+shuriken.precio+" gemas(sold)");
-            
-        // }
-        // if (escudo.sold == false) {
-        //     System.out.println("(7) escudo_______"+escudo.precio+" gemas");
-        // } else {
-        //     System.out.println("(7) escudo_______"+escudo.precio+" gemas(sold)");
-        // }
-        // if (Ciclo.barca) {
-        //     if (armadura.sold == false) {
-        //         System.out.println("(8) armadura_______"+armadura.precio+" gemas");
-        //     } else {
-        //         System.out.println("(8) armadura_______"+armadura.precio+"(sold) gemas");
-                
-        //     }
-        // }else{
-        //     System.out.println("???");
-        // }
-        // if (pan.sold == false) {
-        //     System.out.println("(9) pan__________"+pan.precio+" gemas");
-        // } else {
-        //     System.out.println("(9) pan__________"+pan.precio+" gemas");
-            
-        // }
-        // if (filete.sold == false) {
-        //     System.out.println("(10) filete_______"+filete.precio+" gemas");
-        // } else {
-        //     System.out.println("(10) filete_______"+filete.precio+" gemas");
-            
-        // }
-        // if (esclavo.sold == false) {
-        //     System.out.println("(11) esclavo_______"+esclavo.precio+" gemas");
-        // } else {
-        //     System.out.println("(11) esclavo_______"+esclavo.precio+"(sold) gemas");
-        //     System.out.println("");
-        // }
         
         
         System.out.println("\nDinero disponible: "+ Personaje.din+" gemas");
