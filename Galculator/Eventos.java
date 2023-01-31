@@ -4,6 +4,22 @@ import java.util.*;
 public class Eventos {
 
     static Scanner sc = new Scanner(System.in);
+
+    public static void read(String nom) {
+        try {
+            try (FileReader file = new FileReader("Sprites/"+nom+".txt")) {
+                int valor=file.read();
+                while(valor!=-1){
+                    System.out.print((char)valor);
+                    valor=file.read();
+                }
+            }
+            } catch (Exception e) {
+            System.out.println(e);
+        }
+        System.out.println("");
+        
+    }
     
     public static void aldeano(){
 

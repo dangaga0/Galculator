@@ -23,7 +23,7 @@ public class Objetos {
     static boolean aldeano = false;
 
     static Objetos hacha = new Objetos(20,"hacha",false,false);
-    static Objetos filete = new Objetos(17,"filete",false,false);
+    static Objetos filete = new Objetos(20,"filete",false,false);
     static Objetos bumeran = new Objetos(16,"bumeran",false,false);
     static Objetos espada = new Objetos(8,"espada",false,false);
     static Objetos shuriken = new Objetos(8,"shuriken",false,false);
@@ -49,29 +49,11 @@ public class Objetos {
     public static void tienda(){
         tien = true;
         if (Ciclo.barca) {
-            try {
-                try (FileReader file = new FileReader("Sprites/shop.txt")) {
-                    int valor=file.read();
-                    while(valor!=-1){
-                        System.out.print((char)valor);
-                        valor=file.read();
-                    }
-                }
-                } catch (Exception e) {
-                System.out.println(e);
-            }
+            Eventos.read("shop");
+                System.out.println("");
         } else {
-            try {
-                try (FileReader file = new FileReader("Sprites/shop2.txt")) {
-                    int valor=file.read();
-                    while(valor!=-1){
-                        System.out.print((char)valor);
-                        valor=file.read();
-                    }
-                }
-                } catch (Exception e) {
-                System.out.println(e);
-            }
+            Eventos.read("shop2");
+            System.out.println("");
         }
         
         

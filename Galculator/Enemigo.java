@@ -38,16 +38,16 @@ public class Enemigo {
 
     }
 
-    public static void slime(){
+    public static void rabbit(){
 
-        Enemigo slime = new Enemigo("slime",6,1,2);
+        Enemigo rabbit = new Enemigo("rabbit",8,2,5);
         com = true;
         Objetos.turn = true;
     }
 
     public static void pajaro(){
 
-        Enemigo slime = new Enemigo("pajaro",7,3,4);
+        Enemigo slime = new Enemigo("pajaro",6,3,4);
         com = true;
         Objetos.turn = true;
 
@@ -71,9 +71,9 @@ public class Enemigo {
         
     }
 
-    public static void momia(){
+    public static void skeleton(){
 
-        Enemigo momia = new Enemigo("momia",8,10,10);
+        Enemigo skeleton = new Enemigo("skeleton",8,10,10);
         com = true;
         Objetos.turn = true;
         
@@ -88,18 +88,18 @@ public class Enemigo {
         
     }
 
-    public static void golem(){
+    public static void ryno(){
 
-        Enemigo golem = new Enemigo("golem",40,9,20);
+        Enemigo ryno = new Enemigo("ryno",40,9,20);
         com = true;
         Objetos.turn = true;
         
 
     }
 
-    public static void oso(){
+    public static void unicorn(){
 
-        Enemigo oso = new Enemigo("oso",29,10,15);
+        Enemigo unicorn = new Enemigo("unicorn",29,10,15);
         com = true;
         Objetos.turn = true;
        

@@ -1,4 +1,4 @@
-import java.io.*;
+
 import java.util.*;
 
 
@@ -34,53 +34,13 @@ while(Objetos.algo){
     rio = false;
     System.out.println("Donde quieres ir a explorar?");
     Eventos.esperar(2);
-    try {
-        try (FileReader file = new FileReader("Sprites/montes.txt")) {
-            int valor=file.read();
-            while(valor!=-1){
-                System.out.print((char)valor);
-                valor=file.read();
-            }
-        }
-        } catch (Exception e) {
-        System.out.println(e);
-    }
+    Eventos.read("montes");
     Eventos.esperar(2);
-    try {
-        try (FileReader file = new FileReader("Sprites/desierto.txt")) {
-            int valor=file.read();
-            while(valor!=-1){
-                System.out.print((char)valor);
-                valor=file.read();
-            }
-        }
-        } catch (Exception e) {
-        System.out.println(e);
-    }
+    Eventos.read("desierto");
     Eventos.esperar(2);
-    try {
-        try (FileReader file = new FileReader("Sprites/pradera.txt")) {
-            int valor=file.read();
-            while(valor!=-1){
-                System.out.print((char)valor);
-                valor=file.read();
-            }
-        }
-        } catch (Exception e) {
-        System.out.println(e);
-    }
+    Eventos.read("pradera");
     Eventos.esperar(2);
-    try {
-        try (FileReader file = new FileReader("Sprites/rio.txt")) {
-            int valor=file.read();
-            while(valor!=-1){
-                System.out.print((char)valor);
-                valor=file.read();
-            }
-        }
-        } catch (Exception e) {
-        System.out.println(e);
-    }
+    Eventos.read("rio");
     Eventos.esperar(1);
     System.out.println("");
 
@@ -117,53 +77,13 @@ while(Objetos.algo){
 
         System.out.println("Donde quieres ir a explorar?");
         Eventos.esperar(2);
-        try {
-            try (FileReader file = new FileReader("Sprites/castillo.txt")) {
-                int valor=file.read();
-                while(valor!=-1){
-                    System.out.print((char)valor);
-                    valor=file.read();
-                }
-            }
-            } catch (Exception e) {
-            System.out.println(e);
-        }
+        Eventos.read("castillo");
         Eventos.esperar(2);
-        try {
-            try (FileReader file = new FileReader("Sprites/villa.txt")) {
-                int valor=file.read();
-                while(valor!=-1){
-                    System.out.print((char)valor);
-                    valor=file.read();
-                }
-            }
-            } catch (Exception e) {
-            System.out.println(e);
-        }
+        Eventos.read("villa");
         Eventos.esperar(2);
-        try {
-            try (FileReader file = new FileReader("Sprites/portal.txt")) {
-                int valor=file.read();
-                while(valor!=-1){
-                    System.out.print((char)valor);
-                    valor=file.read();
-                }
-            }
-            } catch (Exception e) {
-            System.out.println(e);
-        }
+        Eventos.read("portal");
         Eventos.esperar(2);
-        try {
-            try (FileReader file = new FileReader("Sprites/rio.txt")) {
-                int valor=file.read();
-                while(valor!=-1){
-                    System.out.print((char)valor);
-                    valor=file.read();
-                }
-            }
-            } catch (Exception e) {
-            System.out.println(e);
-        }
+        Eventos.read("rio");
         Eventos.esperar(1);
         System.out.println("");
     
@@ -236,42 +156,48 @@ while(Objetos.algo){
         if (pradera) {
             switch (ene){
                 case 1 : Enemigo.pato();
-                try {
-                    try (FileReader file = new FileReader("Sprites/patisp.txt")) {
-                        int valor=file.read();
-                        while(valor!=-1){
-                            System.out.print((char)valor);
-                            valor=file.read();
-                        }
-                    }
-                    } catch (Exception e) {
-                    System.out.println(e);
-                }
+                Eventos.read("patisp");
                 System.out.println("");
                 break;
-                case 2 : Enemigo.slime();
+                case 2 : Enemigo.rabbit();
+                Eventos.read("rabbit");
+                System.out.println("");
                 break;
                 case 0 : Enemigo.pajaro();
+                Eventos.read("bird");
+                System.out.println("");
                 break;
             }
             
         } else if(desierto){
             switch (ene){
-                case 1 : Enemigo.momia();
+                case 1 : Enemigo.skeleton();
+                Eventos.read("skeleton");
+                System.out.println("");
                 break;
                 case 2 : Enemigo.buitre();
+                Eventos.read("buitre");
+                System.out.println("");
                 break;
                 case 0 : Enemigo.camello();
+                Eventos.read("camel");
+                System.out.println("");
                 break;
             }
             
         }else if(montaña){
             switch (ene){
-                case 1 : Enemigo.oso();
+                case 1 : Enemigo.unicorn();
+                Eventos.read("unicorn");
+                System.out.println("");
                 break;
-                case 2 : Enemigo.golem();
+                case 2 : Enemigo.ryno();
+                Eventos.read("ryno");
+                System.out.println("");
                 break;
                 case 0 : Enemigo.dragon();
+                Eventos.read("dragon");
+                System.out.println("");
                 break;
             }
         }
