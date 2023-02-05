@@ -4,7 +4,7 @@ import java.util.*;
 
 
 
-public class Ciclo{
+public class Ciclo extends Eventos{
 
     static Random rm = new Random();
     static Scanner sc = new Scanner(System.in); 
@@ -21,6 +21,8 @@ public class Ciclo{
     static boolean castillo = false;
     static boolean villa = false;
     static boolean portal2 = false;
+    static boolean end = false;
+
 
 
 
@@ -33,15 +35,17 @@ while(Objetos.algo){
     montaña = false;
     rio = false;
     System.out.println("Donde quieres ir a explorar?");
-    Eventos.esperar(2);
-    Eventos.read("montes");
-    Eventos.esperar(2);
-    Eventos.read("desierto");
-    Eventos.esperar(2);
-    Eventos.read("pradera");
-    Eventos.esperar(2);
-    Eventos.read("rio");
-    Eventos.esperar(1);
+    esperar(1);
+    read("montes");
+    esperar(1);
+    read("desierto");
+    esperar(1);
+    read("pradera");
+    esperar(1);
+    read("tienda");
+    esperar(1);
+    read("rio");
+    esperar(1);
     System.out.println("");
 
     String alg = sc.nextLine();
@@ -59,14 +63,17 @@ while(Objetos.algo){
         Objetos.algo = false;
         montaña = true;
         break;
+        case "t":
+            Objetos.tienda();
+            break;
         case ("r"):
         if (barca) {
             System.out.println("has atravesado el rio");
-            Eventos.esperar(3);
+            esperar(3);
             rio = true;
         } else {
             System.out.println("No puedes cruzar el rio sin una barca");
-            Eventos.esperar(3);
+            esperar(3);
         }
         break;
         default:
@@ -76,15 +83,17 @@ while(Objetos.algo){
     while (rio) {
 
         System.out.println("Donde quieres ir a explorar?");
-        Eventos.esperar(2);
-        Eventos.read("castillo");
-        Eventos.esperar(2);
-        Eventos.read("villa");
-        Eventos.esperar(2);
-        Eventos.read("portal");
-        Eventos.esperar(2);
-        Eventos.read("rio");
-        Eventos.esperar(1);
+        esperar(1);
+        read("castillo");
+        esperar(1);
+        read("villa");
+        esperar(1);
+        read("portal");
+        esperar(1);
+        read("tienda");
+        esperar(1);
+        read("rio");
+        esperar(1);
         System.out.println("");
     
 
@@ -94,42 +103,80 @@ while(Objetos.algo){
 
         switch (alg2) {
             case "v":
-            if (villa) {
+            if (end) {
+                read("villan");
+                esperar(4);
+                System.out.println("parece que la villa ya ha vuelto a retomar la normalidad, aunque con todas las victimas todo el mundo esta muy triste");
+                esperar(6);
+                System.out.println("espero que no tengan más problemas de aqui en adelante");
+                esperar(3);
+            } else  if (villa) {
                 System.out.println("parece que no queda mas por hacer");
-                Eventos.esperar(3);
+                esperar(3);
+                read("tumbas");
+                esperar(3);
                 
+
             } else {
-                Eventos.villa();
+                villa();
             }
                 break;
+
             case "p":
-                if (portal) {
+                if (portal2) {
+                    System.out.println("aquí ya no queda nadie");
+                    
+                } else if (portal) {
                     System.out.println("entraste al portal");
-                    Eventos.esperar(5);
+                    esperar(5);
                     if (portal2) {
                         
                     } else {
-                        Eventos.portal();
+                        
+                        portal();
                     }
 
                 } else {
                     System.out.println("Parece peligroso deberia ir a explorar la villa primero");
-                    Eventos.esperar(3);
+                    esperar(3);
                 }
                 break;
+                
             case "c":
-                if (castillo) {
-                System.out.println("Parece el artefacto encajo, has abierto la puerta");
-                Eventos.esperar(5);
+            if (end) {
+                System.out.println("Parece que el rey de los aldeanos y su familia se han mudado a este castillo");
 
-                } else {
-                System.out.println("La puerta esta bloqueada, necesito algo para abrila");
-                Eventos.esperar(3);
+            } else if (castillo) {
+                System.out.println("Los monarcas y el rey parecen rivales muy poderosos,¿Estoy realmente preparado? (s/n)");
+                String res = sc.nextLine();
+
+                switch (res) {
+                    case "s":
+                    System.out.println("Parece la llave ha encajado y la puerta se ha abierto");
+                    esperar(5);
+                    castillo();
+                        break;
+                    case "n":
+                       
+                        break;
+                    
+                    default: System.out.println("orden incorrecta");
+                        break;
                 }
-                break;
+          
+            } else {
+            System.out.println("La puerta esta bloqueada, necesito algo para abrila");
+            esperar(3);
+            }
+            break;
+
+            case "t":
+            Objetos.tienda();
+            break;
+                
             case "r":
             System.out.println("has regresado");
-            Eventos.esperar(2);
+            esperar(2);
             rio = false;
             default:
                 break;
@@ -156,15 +203,15 @@ while(Objetos.algo){
         if (pradera) {
             switch (ene){
                 case 1 : Enemigo.pato();
-                Eventos.read("patisp");
+                read("patisp");
                 System.out.println("");
                 break;
                 case 2 : Enemigo.rabbit();
-                Eventos.read("rabbit");
+                read("rabbit");
                 System.out.println("");
                 break;
                 case 0 : Enemigo.pajaro();
-                Eventos.read("bird");
+                read("bird");
                 System.out.println("");
                 break;
             }
@@ -172,15 +219,15 @@ while(Objetos.algo){
         } else if(desierto){
             switch (ene){
                 case 1 : Enemigo.skeleton();
-                Eventos.read("skeleton");
+                read("skeleton");
                 System.out.println("");
                 break;
                 case 2 : Enemigo.buitre();
-                Eventos.read("buitre");
+                read("buitre");
                 System.out.println("");
                 break;
                 case 0 : Enemigo.camello();
-                Eventos.read("camel");
+                read("camel");
                 System.out.println("");
                 break;
             }
@@ -188,34 +235,31 @@ while(Objetos.algo){
         }else if(montaña){
             switch (ene){
                 case 1 : Enemigo.unicorn();
-                Eventos.read("unicorn");
+                read("unicorn");
                 System.out.println("");
                 break;
                 case 2 : Enemigo.ryno();
-                Eventos.read("ryno");
+                read("ryno");
                 System.out.println("");
                 break;
                 case 0 : Enemigo.dragon();
-                Eventos.read("dragon");
+                read("dragon");
                 System.out.println("");
                 break;
             }
         }
 
-    System.out.println("--------------------------------\nenemigo\t\thp\tdaño\n"+ Enemigo.name+ "\t\t"+ Enemigo.hp+"\t"+Enemigo.dm+"\n--------------------------------");
-
+        System.out.println("--------------------------------\nEnemigo\t\t   hp\tdaño\n"+ Enemigo.name+ "\t\t   "+ Enemigo.hp+"\t"+Enemigo.dm+"\n--------------------------------");
 
         Objetos.turn = true;
 
         while(Objetos.turn){
         Personaje.accion();
+
         
 
-        while (Objetos.tien) {
-
-            }
         while(Objetos.aldeano){
-            Eventos.aldeano();
+            aldeano();
             Objetos.aldeano = false;
             Objetos.turn = false;
             Enemigo.com = false;

@@ -1,7 +1,7 @@
 import java.util.*;
 
 
-public class Enemigo {
+public class Enemigo{
 
     static Random rm = new Random();
 
@@ -12,6 +12,7 @@ public class Enemigo {
     static boolean vivo = true;
     static boolean com = false;
     static int price;
+    static boolean explo =false; 
 
     Enemigo(String name,int hp,int dm,int price){
 
@@ -82,7 +83,7 @@ public class Enemigo {
 
     public static void dragon(){
 
-        Enemigo dragon = new Enemigo("dragon",27,11,15);
+        Enemigo dragon = new Enemigo("dragon",40,15,25);
         com = true;
         Objetos.turn = true;
         
@@ -90,7 +91,7 @@ public class Enemigo {
 
     public static void ryno(){
 
-        Enemigo ryno = new Enemigo("ryno",40,9,20);
+        Enemigo ryno = new Enemigo("ryno",30,9,15);
         com = true;
         Objetos.turn = true;
         
@@ -99,7 +100,7 @@ public class Enemigo {
 
     public static void unicorn(){
 
-        Enemigo unicorn = new Enemigo("unicorn",29,10,15);
+        Enemigo unicorn = new Enemigo("unicornio",29,10,15);
         com = true;
         Objetos.turn = true;
        
@@ -116,7 +117,44 @@ public class Enemigo {
 
     public static void pato_TNT(){
 
-        Enemigo pato_dinamita = new Enemigo("pato\nTNT",1,20,15);
+        Enemigo patoTNT = new Enemigo("pato\nTNT",1,20,15);
+        com = true;
+        Objetos.turn = true;
+        explo = true;
+        
+
+    }
+
+    public static void monarca_hacha(){
+
+        Enemigo monarca_hacha = new Enemigo("monarca\nhachas",45,30,45);
+        com = true;
+        Objetos.turn = true;
+        
+
+    }
+
+    public static void monarca_espadas(){
+
+        Enemigo monarca_espadas = new Enemigo("monarca\nespadas",55,20,45);
+        com = true;
+        Objetos.turn = true;
+        
+
+    }
+
+    public static void monarca_escudo(){
+
+        Enemigo monarca_escudo = new Enemigo("monarca\nescudos",100,10,47);
+        com = true;
+        Objetos.turn = true;
+        
+
+    }
+
+    public static void rey_pato(){
+
+        Enemigo rey_pato = new Enemigo("rey\npato",60,27,99);
         com = true;
         Objetos.turn = true;
         

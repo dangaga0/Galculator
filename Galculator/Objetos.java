@@ -1,7 +1,6 @@
-import java.io.FileReader;
 import java.util.*;
 
-public class Objetos {
+public class Objetos extends Eventos{
 
     static Scanner sc2 = new Scanner(System.in);
     static Scanner sc1 = new Scanner(System.in);
@@ -21,6 +20,12 @@ public class Objetos {
     static boolean algo = true;
     static boolean turn = true;
     static boolean aldeano = false;
+    static int panc = 0;
+    static int filetesc = 0;
+    static int shurikenc = 0;
+    static int poc_ataquec = 0;
+    static int poc_defensac = 0;
+    static int poc_velocidadc = 0;
 
     static Objetos hacha = new Objetos(20,"hacha",false,false);
     static Objetos filete = new Objetos(20,"filete",false,false);
@@ -28,11 +33,15 @@ public class Objetos {
     static Objetos espada = new Objetos(8,"espada",false,false);
     static Objetos shuriken = new Objetos(8,"shuriken",false,false);
     static Objetos escudo = new Objetos(10,"escudo",false,false);
-    static Objetos pan = new Objetos(5,"pan",false,false);
+    static Objetos pan = new Objetos(6,"pan",false,false);
     static Objetos esclavo = new Objetos(50,"esclavo",false,false);
     static Objetos armadura = new Objetos(35,"armadura",false,false);
-    static Objetos anillo_fuego = new Objetos(50,"anillo_fuego",false,false);
-    static Objetos anillo_hielo = new Objetos(50,"anillo_hielo",false,false);
+    static Objetos anillo_fuego = new Objetos(40,"anillo_fuego",false,false);
+    static Objetos anillo_hielo = new Objetos(40,"anillo_hielo",false,false);
+    static Objetos collar_mistico = new Objetos(40,"anillo_hielo",false,false);
+    static Objetos poc_velocidad = new Objetos(15,"poc_velocidad",false,false);
+    static Objetos poc_defensa = new Objetos(10,"poc_defensa",false,false);
+    static Objetos poc_ataque = new Objetos(20,"poc_ataque",false,false);
     
 
     Objetos(int precio,String name,boolean sold,boolean pow){
@@ -47,12 +56,12 @@ public class Objetos {
     }
 
     public static void tienda(){
-        tien = true;
+
         if (Ciclo.barca) {
-            Eventos.read("shop");
+            read("shop");
                 System.out.println("");
         } else {
-            Eventos.read("shop2");
+            read("shop2");
             System.out.println("");
         }
         
@@ -66,8 +75,8 @@ public class Objetos {
         } catch (Exception e) {
             System.out.println("orden incorrecta");
             pro = sc3.nextInt();
-            //Eventos.esperar(2);
-            //tienda();
+            esperar(2);
+            tienda();
         }
         
     
@@ -78,7 +87,7 @@ public class Objetos {
 
             if (hacha.sold) {
                 System.out.println("No puedes volver a comprar este objeto");
-                Eventos.esperar(2);
+                esperar(2);
                 tienda();
             } else {
                 System.out.println("El hacha aumenta el ataque +9, su precio es de "+hacha.precio+" gemas");
@@ -86,19 +95,14 @@ public class Objetos {
             } 
             break;
             case 2:
-            if (bumeran.sold) {
-                System.out.println("No puedes volver a comprar este objeto");
-                Eventos.esperar(2);
-                tienda();
-            } else {
                 System.out.println("El bumeran aumenta el ataque +4 y tienes una probabilidad de poder asestar dos golpes, su precio es de  "+bumeran.precio+" gemas");
                 bumeran.buy();
-            } 
+             
             break;
             case 3:
             if (espada.sold) {
                 System.out.println("No puedes volver a comprar este objeto");
-                Eventos.esperar(2);
+                esperar(2);
                 tienda();
             } else {
                 System.out.println("La espada aumenta el ataque en +2, su precio es de "+espada.precio+" gemas");
@@ -108,45 +112,45 @@ public class Objetos {
             case 6:
             if (shuriken.sold) {
                 System.out.println("No puedes tener dos unidades de este objeto");
-                Eventos.esperar(2);
+                esperar(2);
                 tienda();
             } else {
                 System.out.println("Gracias a estos shurikens tu proximo ataque tendra un daño adicional de +4, su precio es de  "+shuriken.precio+" gemas");
                 shuriken.buy();
             }           
             break;
-            case 7:
+            case 10:
             if (escudo.sold) {
                 System.out.println("No puedes volver a comprar este objeto");
-                Eventos.esperar(2);
+                esperar(2);
                 tienda();
             } else {
                 System.out.println("El escudo reduce el daño recibido en -1, su precio es de "+escudo.precio+" gemas");
                 escudo.buy();
             }           
             break;
-            case 9:
-            System.out.println("Restaura 5 de salud, su precio es de 5 gemas");
+            case 12:
+            System.out.println("Restaura 5 de salud al ser consumido, su precio es de "+pan.precio+" gemas");
             pan.buy();
             break;
-            case 10:
-            System.out.println("Restaura 15 de salud, su precio es de  "+filete.precio+" gemas");
+            case 13:
+            System.out.println("Restaura 15 de salud al ser consumido, su precio es de  "+filete.precio+" gemas");
             filete.buy();
             break;
-            case 11:
+            case 15:
             if (esclavo.sold) {
                 System.out.println("No puedes volver a comprar este objeto");
-                Eventos.esperar(2);
+                esperar(2);
                 tienda();
             } else {
                 System.out.println("Es un esclavo, quizas te sirva para algo, su precio es de "+esclavo.precio+" gemas");
                 esclavo.buy();
             }     
             break;
-            case 8:
+            case 11:
             if (armadura.sold || Ciclo.barca == false) {
                 System.out.println("No puedes comprar este objeto");
-                Eventos.esperar(2);
+                esperar(2);
                 tienda();
             } else {
                 System.out.println("la armadura reduce el daño recibido en -2, su precio es de "+armadura.precio+" gemas");
@@ -156,78 +160,109 @@ public class Objetos {
             case 4:
             if (anillo_fuego.sold || Ciclo.barca == false) {
                 System.out.println("No puedes comprar este objeto");
-                Eventos.esperar(2);
+                esperar(2);
                 tienda();
             } else {
-                System.out.println("El anillo de fuego quema al enemigo causando un daño residual de 3, su precio es de "+anillo_fuego.precio+" gemas");
+                System.out.println("El anillo de fuego quema al enemigo causando un daño residual de 4, su precio es de "+anillo_fuego.precio+" gemas");
                 anillo_fuego.buy();
             }
             break;           
             case 5:
             if (anillo_hielo.sold || Ciclo.barca == false) {
                 System.out.println("No puedes comprar este objeto");
-                Eventos.esperar(2);
+                esperar(2);
                 tienda();
             } else {
                 System.out.println("El anillo de hielo puede congelar al enemigo impidiendole atacar, su precio es de "+anillo_hielo.precio+" gemas");
                 anillo_hielo.buy();
             }
+            break;
+            case 7:
+            if (Ciclo.barca == false) {
+                System.out.println("No puedes comprar este objeto");
+                esperar(2);
+                tienda();
+            } else {
+                System.out.println("Te permite atacar primero al turno siguiente de ser consumido, su precio es de "+poc_velocidad.precio+" gemas");
+                poc_velocidad.buy();
+            }
+            break;
+            case 8:
+            if (Ciclo.barca == false) {
+                System.out.println("No puedes comprar este objeto");
+                esperar(2);
+                tienda();
+            } else {
+                System.out.println("Reduce el daño recibido en -3 al turno siguiente de ser consumido, su precio es de "+poc_defensa.precio+" gemas");
+                poc_defensa.buy();
+            }
+            break;
+            case 9:
+            if (Ciclo.barca == false) {
+                System.out.println("No puedes comprar este objeto");
+                esperar(2);
+                tienda();
+            } else {
+                System.out.println("Aumenta en un 50% el daño al turno siguiente de ser consumido, su precio es de "+poc_ataque.precio+" gemas");
+                poc_ataque.buy();
+            }
+            break;
+            case 14:
+            if (collar_mistico.sold || Ciclo.barca == false) {
+                System.out.println("No puedes comprar este objeto");
+                esperar(2);
+                tienda();
+            } else {
+                System.out.println("Te permite recuperrar 2 de salud al terminar el turno, su precio es de "+collar_mistico.precio+" gemas");
+                collar_mistico.buy();
+            }
             break;                      
             case 0:
-            tien = false;
-            turn = true;
 
-            if(Objetos.hacha.pow){
+            if(hacha.pow){
                 Personaje.dm = Personaje.dm + 9;
-                Objetos.hacha.pow = false;
+                hacha.pow = false;
             }
     
-            if(Objetos.espada.pow){
+            if(espada.pow){
                 Personaje.dm = Personaje.dm + 2;
-                Objetos.espada.pow = false;
+                espada.pow = false;
             }
     
-            if(Objetos.pan.pow){
+            if(pan.pow){
                 Personaje.hp = Personaje.hp + 5;
-                Objetos.pan.sold = false;
-                Objetos.pan.pow = false;
+                pan.sold = false;
+                pan.pow = false;
             }
     
-            if (Objetos.filete.pow){
+            if (filete.pow){
                 Personaje.hp = Personaje.hp + 15;
-                Objetos.filete.sold = false;
-                Objetos.filete.pow = false;
+                filete.sold = false;
+                filete.pow = false;
             }
     
-            if (Objetos.bumeran.pow){
+            if (bumeran.pow){
                 Personaje.dm = Personaje.dm + 4;
-                Objetos.bumeran.pow = false;
-            }
-    
-            if (Objetos.shuriken.pow){
-                Personaje.dm = Personaje.dm +4;
-                Objetos.shuriken.pow = false;
+                bumeran.pow = false;
             }
 
-            if (Objetos.escudo.pow){
+            if (escudo.pow){
                 Enemigo.dm = Enemigo.dm -1;
-                Objetos.escudo.pow = false;
+                escudo.pow = false;
             }
-            if (Objetos.armadura.pow){
+            if (armadura.pow){
                 Enemigo.dm = Enemigo.dm -2;
-                Objetos.escudo.pow = false;
+                escudo.pow = false;
             }
 
-            if (Objetos.esclavo.pow){
+            if (esclavo.pow){
                 aldeano = true;
-                Objetos.esclavo.pow = false;
-            }else{
-                System.out.println("--------------------------------\nenemigo\t\thp\tdaño\n"+ Enemigo.name+ "\t\t"+ Enemigo.hp+"\t"+Enemigo.dm+"\n--------------------------------");
+                esclavo.pow = false;
             }
             break;
             default:
             System.out.println("orden incorrecta");
-            Eventos.esperar(2);
+            esperar(2);
             tienda();
             break;
         }
@@ -242,16 +277,45 @@ public class Objetos {
 
         if (res.equals("s") && Personaje.din <= this.precio) {
             System.out.println("no tienes dinero, vete a otro lado con tu pobreza");
-            Eventos.esperar(2);
+            esperar(2);
             tienda();
         } else if(res.equals("s") && Personaje.din >= this.precio){
-            System.out.println("Has adquirido el producto");
-            Eventos.esperar(2);
-            Personaje.din = Personaje.din - this.precio;
             this.sold = true;
             this.pow = true;
-            tienda();
+            if (pan.pow) {
+                vender(Objetos.pan.pow, Objetos.panc, this.precio);
+                Objetos.panc = canti;
+                pan.pow = false;
+            } else if (filete.pow){
+                vender(Objetos.filete.pow, Objetos.filetesc, this.precio);
+                Objetos.filetesc = canti;
+                filete.pow = false;
+            } else if (shuriken.pow){
+                vender(Objetos.shuriken.pow, Objetos.shurikenc, this.precio);
+                Objetos.shurikenc = canti;
+                shuriken.pow = false;
             }
+            else if (poc_defensa.pow){
+                vender(Objetos.poc_defensa.pow, Objetos.poc_defensac, this.precio);
+                Objetos.poc_defensac = canti;
+                poc_defensa.pow = false;
+            }
+            else if (poc_ataque.pow){
+                vender(Objetos.poc_ataque.pow, Objetos.poc_ataquec, this.precio);
+                Objetos.poc_ataquec = canti;
+                poc_ataque.pow = false;
+            }
+            else if (poc_velocidad.pow){
+                vender(Objetos.poc_velocidad.pow, Objetos.poc_velocidadc, this.precio);
+                Objetos.poc_velocidadc = canti;
+                poc_velocidad.pow = false;
+            } else{
+                Personaje.din = Personaje.din - this.precio;
+                System.out.println("Has adquirido el producto");
+                esperar(2);
+            }
+            tienda();
+        }
         else if (res.equals("n")) {
             tienda();
             } else {
@@ -260,5 +324,6 @@ public class Objetos {
         
     }
 
-}
+}   
+
     
