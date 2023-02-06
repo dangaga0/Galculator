@@ -91,7 +91,7 @@ public class Eventos {
             }
             Personaje.din += Enemigo.price;
             Personaje.xp += Enemigo.xp;
-            if (Personaje.xp >= (int) (Math.pow(Personaje.lv, 2)*(3/7)+2)) {
+            if (Personaje.xp >= Personaje.aulv) {
                 lvup();
                 
             }
@@ -102,8 +102,10 @@ public class Eventos {
 
     }
     public static void lvup() {
-        Personaje.xp =0;
+        Personaje.xp -=Personaje.aulv;
         Personaje.lv ++;
+        Personaje.aulv2 = Personaje.lv * Personaje.lv * 0.5 *0.42 +4;
+        Personaje.aulv = (int) Personaje.aulv2;
         System.out.println("**has subido a nivel "+ Personaje.lv+"**");
         esperar(3);
         if (Personaje.lv % 2 == 0 && Personaje.lv % 5 == 0) {
@@ -120,8 +122,11 @@ public class Eventos {
             System.out.println("VIDA: "+Personaje.hp+" + "+ "1\nDAÑO: "+Personaje.dm+" + "+ "1");
         }
         esperar(4);
+            if (Personaje.xp >= Personaje.aulv) {
+                lvup();
+                
+            }
        
-        
 
     }
 
@@ -137,17 +142,27 @@ public class Eventos {
             Objetos.shuriken.sold = false;
             Objetos.filete.sold = false;
             Objetos.bumeran.sold = false;
+            Objetos.poc_ataque.sold = false;
+            Objetos.poc_defensa.sold = false;
+            Objetos.poc_velocidad.sold = false;
+            Objetos.anillo_fuego.sold = false;
+            Objetos.anillo_hielo.sold = false;
+            Objetos.collar_mistico.sold = false;
             Ciclo.rio = false;
             Ciclo.barca = false;
             Ciclo.portal = false;
             Ciclo.castillo = false;
             Ciclo.villa = false;
             Ciclo.portal2 = false;
+            Ciclo.end = false;
 
 
-            Personaje.din = 0;
+
+            Personaje.din = 10;
             Personaje.hp = 10;
             Personaje.dm = 5;
+            Personaje.lv = 1;
+            Personaje.xp = 0;
 
             
             read("muerte");

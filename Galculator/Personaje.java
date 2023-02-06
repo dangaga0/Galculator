@@ -6,10 +6,12 @@ public class Personaje extends Eventos{
     static Scanner sc = new Scanner(System.in);
 
     static int din = 10;
-    static int hp = 10;
+    static int hp = 15;
     static int dm = 5;
     static int lv = 1;
     static int xp = 0;
+    static double aulv2 = Personaje.lv * Personaje.lv * 0.5 *0.42 +4;
+    static int aulv = (int) aulv2;
     static int phu;
     static String vol;
     static boolean tnt = false;
@@ -266,7 +268,9 @@ public class Personaje extends Eventos{
     System.out.println("\n-" + hp+" hp");
     System.out.println("-"+ dm+" daño");
     System.out.println("-"+ din+" gemas");
-    System.out.println("-lv "+ lv);
+    System.out.println("-lv "+ lv + "  " +xp);
+    System.out.println(aulv);
+
     
 
     System.out.println("\n(r) para regresar o las letras para usar los objetos");

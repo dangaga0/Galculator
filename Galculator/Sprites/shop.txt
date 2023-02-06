@@ -4,7 +4,7 @@
 |: : : : : : : : : : : : : : : _)                         (_ : : : : : : : |    | (3) espada__________8  gemas |
 | : : : : : : : : : : : : : : )_ :  *******TIENDA*******:  _( : : : : : : :|    | (4) anillo_fuego____40 gemas |
 |: : Elevator  : : : :__________)_________________________(__________  : : |    | (5) anillo_hielo____40 gemas |
-| _____________ : _ :/ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ\: _ :|    | (6) shuriken________8  gemas |
+| _____________ : _ :/ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ\: _ :|    | (6) shuriken________5  gemas |
 ||  _________  | /_\ '.Z.'.Z.'.Z.'.Z.'.Z.'.Z.'.Z.'.Z.'.Z.'.Z.'.Z.'.Z.' /_\ |    | (7) poc_velocidad___15 gemas |   
 || |    |    | |:=|=: |Armas * Armaduras _________ Comida * Objetos | :=|=:|    | (8) poc_defensa_____10 gemas |
 || |    |    | | : : :|   ______    _  .'         '.  _    ______   |: : : |    | (9) poc_ataque______20 gemas |

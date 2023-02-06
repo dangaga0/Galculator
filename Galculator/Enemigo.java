@@ -166,7 +166,9 @@ public class Enemigo{
 
 
     public static void ataque(){
-
+        if (dm <0) {
+            dm = 0;
+        }
         System.out.println("el enemigo a atacado inflingiendo " + Enemigo.dm);
         Personaje.hp = (Personaje.hp - Enemigo.dm);
         System.out.println("--------------------------------\ntu\thp\tdaño\ntu\t"+ Personaje.hp+"\t"+Personaje.dm+"\n--------------------------------");

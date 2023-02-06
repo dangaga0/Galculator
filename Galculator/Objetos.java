@@ -31,8 +31,8 @@ public class Objetos extends Eventos{
     static Objetos filete = new Objetos(20,"filete",false,false);
     static Objetos bumeran = new Objetos(16,"bumeran",false,false);
     static Objetos espada = new Objetos(8,"espada",false,false);
-    static Objetos shuriken = new Objetos(8,"shuriken",false,false);
-    static Objetos escudo = new Objetos(10,"escudo",false,false);
+    static Objetos shuriken = new Objetos(5,"shuriken",false,false);
+    static Objetos escudo = new Objetos(15,"escudo",false,false);
     static Objetos pan = new Objetos(6,"pan",false,false);
     static Objetos esclavo = new Objetos(50,"esclavo",false,false);
     static Objetos armadura = new Objetos(35,"armadura",false,false);
@@ -70,16 +70,8 @@ public class Objetos extends Eventos{
         System.out.println("\nDinero disponible: "+ Personaje.din+" gemas");
         System.out.println("para mirar la descripcion escriba el numero del producto.");
         System.out.println("para salir de la tienda (0)");
-        try {
+       
             pro = sc1.nextInt();
-        } catch (Exception e) {
-            System.out.println("orden incorrecta");
-            pro = sc3.nextInt();
-            esperar(2);
-            tienda();
-        }
-        
-    
 
         
         switch (pro) {

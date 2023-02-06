@@ -17,7 +17,7 @@ public class Game {
         Ciclo.reloj();
         }
 
-     }
+    }
 }
 
 
