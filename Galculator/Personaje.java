@@ -5,10 +5,11 @@ public class Personaje extends Eventos{
     static Random rm = new Random();
     static Scanner sc = new Scanner(System.in);
 
-    boolean vivo = true;
-    static int din = 0;
+    static int din = 10;
     static int hp = 10;
     static int dm = 5;
+    static int lv = 1;
+    static int xp = 0;
     static int phu;
     static String vol;
     static boolean tnt = false;
@@ -133,7 +134,7 @@ public class Personaje extends Eventos{
             if (Ciclo.rio) {
                 System.out.println("no puedes huir");
             } else {
-                phu = rm.nextInt(2);
+                phu = rm.nextInt(4);
 
             if (phu == 0) {
                 esperar(2);
@@ -262,9 +263,10 @@ public class Personaje extends Eventos{
 
 
     System.out.println("\n****Stadisticas****");
-    System.out.println("\n-" + Personaje.hp+" hp");
-    System.out.println("-"+Personaje.dm+" daño");
-    System.out.println("-"+Personaje.din+" gemas");
+    System.out.println("\n-" + hp+" hp");
+    System.out.println("-"+ dm+" daño");
+    System.out.println("-"+ din+" gemas");
+    System.out.println("-lv "+ lv);
     
 
     System.out.println("\n(r) para regresar o las letras para usar los objetos");
@@ -281,7 +283,6 @@ public class Personaje extends Eventos{
             } else {
                 System.out.println("no te quedan unidades");
             }
-            esperar(2);
             inventario();
             break;
             case "f":
@@ -291,7 +292,6 @@ public class Personaje extends Eventos{
             } else {
                 System.out.println("no te quedan unidades");
             }
-            esperar(2);
             inventario();
             break;
             case "s":
@@ -304,7 +304,6 @@ public class Personaje extends Eventos{
             } else {
                 System.out.println("no te quedan unidades");
             }
-            esperar(2);
             inventario();
             break;
             case "a":
@@ -316,7 +315,6 @@ public class Personaje extends Eventos{
             } else {
                 System.out.println("no te quedan unidades");
             }
-            esperar(2);
             inventario();
             break;
             case "d":
@@ -328,7 +326,6 @@ public class Personaje extends Eventos{
             } else {
                 System.out.println("no te quedan unidades");
             }
-            esperar(2);
             inventario();
 
             break;
@@ -341,7 +338,6 @@ public class Personaje extends Eventos{
             } else {
                 System.out.println("no te quedan unidades");
             }
-            esperar(2);
             inventario();
 
             break;

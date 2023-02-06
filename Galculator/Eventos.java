@@ -89,11 +89,39 @@ public class Eventos {
                 Personaje.hp -= 5;
                 Enemigo.explo = false;
             }
-            Personaje.din = Personaje.din + Enemigo.price;
+            Personaje.din += Enemigo.price;
+            Personaje.xp += Enemigo.xp;
+            if (Personaje.xp >= (int) (Math.pow(Personaje.lv, 2)*(3/7)+2)) {
+                lvup();
+                
+            }
             System.out.println("------------------------------------------------\nhas ganado " + Enemigo.price+" gemas, te espera otra batalla");
             Objetos.turn = false;
             
         }
+
+    }
+    public static void lvup() {
+        Personaje.xp =0;
+        Personaje.lv ++;
+        System.out.println("**has subido a nivel "+ Personaje.lv+"**");
+        esperar(3);
+        if (Personaje.lv % 2 == 0 && Personaje.lv % 5 == 0) {
+            Personaje.hp += 2; 
+            Personaje.dm ++;
+            System.out.println("VIDA: "+Personaje.hp+" + "+ "2\nDAÑO: "+Personaje.dm+" + "+ "1");
+        } else if (Personaje.lv % 5 == 0) { 
+            Personaje.hp ++; 
+            Personaje.dm += 2;
+            System.out.println("VIDA: "+Personaje.hp+" + "+ "1\nDAÑO: "+Personaje.dm+" + "+ "2");
+        } else {
+            Personaje.hp ++; 
+            Personaje.dm ++;
+            System.out.println("VIDA: "+Personaje.hp+" + "+ "1\nDAÑO: "+Personaje.dm+" + "+ "1");
+        }
+        esperar(4);
+       
+        
 
     }
 
