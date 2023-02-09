@@ -170,34 +170,16 @@ public class Objetos extends Eventos{
             }
             break;
             case 7:
-            if (Ciclo.barca == false) {
-                System.out.println("No puedes comprar este objeto");
-                esperar(2);
-                tienda();
-            } else {
                 System.out.println("Te permite atacar primero al turno siguiente de ser consumido, su precio es de "+poc_velocidad.precio+" gemas");
                 poc_velocidad.buy();
-            }
             break;
             case 8:
-            if (Ciclo.barca == false) {
-                System.out.println("No puedes comprar este objeto");
-                esperar(2);
-                tienda();
-            } else {
                 System.out.println("Reduce el daño recibido en -3 al turno siguiente de ser consumido, su precio es de "+poc_defensa.precio+" gemas");
                 poc_defensa.buy();
-            }
             break;
             case 9:
-            if (Ciclo.barca == false) {
-                System.out.println("No puedes comprar este objeto");
-                esperar(2);
-                tienda();
-            } else {
                 System.out.println("Aumenta en un 50% el daño al turno siguiente de ser consumido, su precio es de "+poc_ataque.precio+" gemas");
                 poc_ataque.buy();
-            }
             break;
             case 14:
             if (collar_mistico.sold || Ciclo.barca == false) {

@@ -89,6 +89,11 @@ public class Eventos {
                 Personaje.hp -= 5;
                 Enemigo.explo = false;
             }
+            if (Enemigo.dragonv) {
+                Personaje.dragond = true;
+
+                
+            }
             Personaje.din += Enemigo.price;
             Personaje.xp += Enemigo.xp;
             if (Personaje.xp >= Personaje.aulv) {

@@ -14,6 +14,7 @@ public class Enemigo{
     static int price;
     static boolean explo =false;
     static int xp = 0;
+    static boolean dragonv;
  
 
     Enemigo(String name,int hp,int dm,int price, int xp){
@@ -89,6 +90,7 @@ public class Enemigo{
         Enemigo dragon = new Enemigo("dragon",40,15,25,20);
         com = true;
         Objetos.turn = true;
+        dragonv = true;
         
     }
 

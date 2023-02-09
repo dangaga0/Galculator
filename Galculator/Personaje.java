@@ -20,6 +20,9 @@ public class Personaje extends Eventos{
     static int aum;
     static boolean defensa = false;
     static boolean velocidad = false;
+    static boolean dragond = false;
+    static int beb;
+    static int com;
 
     
 
@@ -264,12 +267,31 @@ public class Personaje extends Eventos{
 
 
 
-    System.out.println("\n****Stadisticas****");
+    System.out.println("\n****ESTADÍSTICAS****");
     System.out.println("\n-" + hp+" hp");
     System.out.println("-"+ dm+" daño");
     System.out.println("-"+ din+" gemas");
-    System.out.println("-lv "+ lv + "  " +xp);
-    System.out.println(aulv);
+    System.out.println("-lv "+ lv );
+
+    System.out.println("\n*****LOGROS*****");
+    System.out.println();
+    if (dragond) {
+        System.out.println("-MATADRAGONES (mata a un dragón)");
+    }
+    if (beb > 9) {
+        System.out.println("-SEDIENTO (bebe diez pociones)");
+    }
+    if (com > 9) {
+        System.out.println("-HAMBRIENTO (ingiere diez comidas)");
+    }
+    if (dragond) {
+        System.out.println("-MATADRAGONES (mata a un dragón)");
+    }
+    if (Objetos.anillo_fuego.sold && Objetos.anillo_hielo.sold && Objetos.collar_mistico.sold) {
+        System.out.println("-APRENDIZ DE MAGO (consigue todos los objetos mágicos)");
+    }
+    
+    
 
     
 
@@ -283,6 +305,7 @@ public class Personaje extends Eventos{
             case "p":
             if (Objetos.panc>0) {
                 curar(5);
+                com++;
                 Objetos.panc--;
             } else {
                 System.out.println("no te quedan unidades");
@@ -292,6 +315,7 @@ public class Personaje extends Eventos{
             case "f":
             if (Objetos.filetesc>0) {
                 curar(15);
+                com++;
                 Objetos.filetesc--;
             } else {
                 System.out.println("no te quedan unidades");
@@ -313,6 +337,7 @@ public class Personaje extends Eventos{
             case "a":
             if (Objetos.poc_ataquec>0) {
                 System.out.println("has bebido la poc_ataque");
+                beb++;
                 ataque = true;
                 Objetos.poc_ataquec--;
 
@@ -324,6 +349,7 @@ public class Personaje extends Eventos{
             case "d":
             if (Objetos.poc_defensac>0) {
                 System.out.println("has bebido la poc_defensa");
+                beb++;
                 defensa = true;
                 Objetos.poc_defensac--;
 
@@ -336,6 +362,7 @@ public class Personaje extends Eventos{
             case "v":
             if (Objetos.poc_velocidadc>0) {
                 System.out.println("has bebido la poc_velocidad");
+                beb++;
                 velocidad = true;
                 Objetos.poc_velocidadc--;
 
